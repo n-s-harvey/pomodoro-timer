@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import TimerStatus from "./timerStatus";
 
 export const timerSlice = createSlice({
   name: 'timer',
@@ -8,6 +9,7 @@ export const timerSlice = createSlice({
       seconds: 0,
       timerName: 'Session',
       beginningTime: 0,
+      status: TimerStatus.isPaused,
     }
   },
   reducers: {
@@ -20,6 +22,12 @@ export const timerSlice = createSlice({
     setBeginningTime: (state, action) => {
       state.value.beginningTime = Date.now();
     },
+    /**
+    * @param {TimerStatus} action
+    */
+    setStatus: (state, action) => {
+      state.value.status = action.payload;
+    }
   }
 })
 
