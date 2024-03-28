@@ -7,6 +7,7 @@ export const timerSlice = createSlice({
       minutes: 25,
       seconds: 0,
       timerName: 'Session',
+      beginningTime: 0,
     }
   },
   reducers: {
@@ -15,10 +16,13 @@ export const timerSlice = createSlice({
     },
     setSeconds: (state, action) => {
       state.value.seconds = action.payload.seconds;
-    }
+    },
+    setBeginningTime: (state, action) => {
+      state.value.beginningTime = Date.now();
+    },
   }
 })
 
-export const { setMinutes, setSeconds } = timerSlice.actions;
+export const { setMinutes, setSeconds, setBeginningTime } = timerSlice.actions;
 
 export default timerSlice.reducer;
